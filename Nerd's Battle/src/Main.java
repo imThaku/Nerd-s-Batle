@@ -1,19 +1,17 @@
-<<<<<<< HEAD
+
 import java.io.File;
 import java.io.IOException;
-=======
->>>>>>> f9b22dd464e9e7a27f3fc0a7778b0d47f7f618f7
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Main {
-<<<<<<< HEAD
+
+
 	public static void main(String[] args) throws IOException {
-=======
-	public static void main(String[] args) {
 		ArrayList<Cac> listCAC = new ArrayList();
->>>>>>> f9b22dd464e9e7a27f3fc0a7778b0d47f7f618f7
+
 		System.out.println("Bienvenu dans Nerd's Battle!");
 		System.out.println("Quel mode voulez lancer ?");
 		System.out.println("	1. 1v1 compétitif");
@@ -31,17 +29,17 @@ public class Main {
 				System.out.println("Mode en dev");
 			}else if(r.equals("3")){
 				System.out.println("Mod sélectionné: 1vPoutch.");
-<<<<<<< HEAD
+
 				File file = Explorer.getFile();
 				CSVDecoder csv = new CSVDecoder(file);
 				CSV=csv.decodeCac();
 				for(int i=0;i<CSV.size();i++){
 					System.out.println(CSV.get(i).toString());
 				}
-=======
+
 				launchStuff(listCAC);
 				launch1vPoutch(listCAC);
->>>>>>> f9b22dd464e9e7a27f3fc0a7778b0d47f7f618f7
+
 			}
 			else{
 				System.out.println("Choisissez un mode valide, 1 ,2 ou 3.");
@@ -55,6 +53,12 @@ public class Main {
 		Cac b = new Cac("Arcflingué",0.9,"physique");
 		lc.add(a);
 		lc.add(b);
+	}
+	
+	public static void test(){
+		
+		
+		
 	}
 	
 	public static void launch1vPoutch(ArrayList lcac){
