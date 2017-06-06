@@ -8,8 +8,10 @@ public class Personnage {
 	private double atkspe;
 	private double def;
 	private double defspe;
-	private ArrayList Sort;
-	private Cac cac = new Cac("Coup de poing",1.0,"physique");
+	private double gold =5000;
+	private ArrayList <Sort> listSorts;
+	private Cac cac = new Cac("Coup de poing",1.0,"physique",0,0,0,0,0,0,0,0);
+	private Armure armure = new Armure("Armure du debutant", 0, 0, 0, 0, 0, 0, 0,0);
 	
 	public Personnage(double vita, double vitesse, double esquive, double atk, double atkspe, double def,double defspe) {
 		this.vita = vita;
@@ -20,6 +22,23 @@ public class Personnage {
 		this.def = def;
 		this.defspe = defspe;
 	}
+	
+	
+	public ArrayList<Sort> getListSorts() {
+		return listSorts;
+	}
+
+
+	public void setListSorts(ArrayList<Sort> listSorts) {
+		this.listSorts = listSorts;
+	}
+
+
+	public Armure getArmure() {
+		return armure;
+	}
+
+
 	public double getVita() {
 		return vita;
 	}
@@ -62,20 +81,58 @@ public class Personnage {
 	public void setDefspe(double defspe) {
 		this.defspe = defspe;
 	}
-	public ArrayList getSort() {
-		return Sort;
+	public double getSort(int numSort) {
+		return listSorts.get(numSort).getCoeffDegatSort();
 	}
 
-	public void setSort(ArrayList sort) {
-		Sort = sort;
-	}
 
 	public Cac getCac() {
 		return cac;
 	}
+	
+	public void subitDegat(double degats){
+		this.vita -= degats;
+	}
+	
+	public double infligeDegatCac(){
+		return this.atk * this.cac.getValeur();
+	}
+	
+	public double infligeDegatCacSpe(){
+		return this.atkspe * this.cac.getValeur();
+	}
+	
+	public double infligeDegatSpell(int numSort){
+		return this.atkspe * listSorts.get(numSort).getCoeffDegatSort();
+	}
 
+
+	public double getGold() {
+		return gold;
+	}
+	public void setGold(double gold) {
+		this.gold = gold;
+	}
 	public void setCac(Cac cac) {
 		this.cac = cac;
+		this.vita=this.vita+cac.getBONUSvita();
+		this.vitesse=this.vitesse+cac.getBONUSvitesse();
+		this.esquive=this.esquive+cac.getBONUSesquive();
+		this.atk=this.atk+cac.getBONUSatk();
+		this.atkspe=this.atkspe+cac.getBONUSatkspe();
+		this.def=this.def+cac.getBONUSdef();
+		this.defspe=this.defspe+cac.getBONUSdefspe();
+	}
+	
+	public void setArmure(Armure armure) {
+		this.armure = armure;
+		this.vita=this.vita+armure.getBonus_vita();
+		this.vitesse=this.vitesse+armure.getBonus_vitesse();
+		this.esquive=this.esquive+armure.getBonus_esquive();
+		this.atk=this.atk+armure.getBonus_attaque();
+		this.atkspe=this.atkspe+armure.getBonus_attaqueSpe();
+		this.def=this.def+armure.getBonus_def();
+		this.defspe=this.defspe+armure.getBonus_defSpe();
 	}
 	public boolean isDead(){
 		boolean rtn =false;
