@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 
 public class Main {
-
-
+	static ArrayList<Cac> CSV = new ArrayList<Cac>();
+	static File file;
 	public static void main(String[] args) throws IOException {
 		ArrayList<Cac> listCAC = new ArrayList();
 
@@ -18,7 +18,6 @@ public class Main {
 		System.out.println("	2. 1vIA Campagne");
 		System.out.println("	3. 1vPoutch");
 		String r ="";
-		ArrayList<Cac> CSV = new ArrayList<Cac>();
 		while(r.equals("")){
 			Scanner sc = new Scanner(System.in);
 			r = sc.nextLine();
@@ -29,13 +28,6 @@ public class Main {
 				System.out.println("Mode en dev");
 			}else if(r.equals("3")){
 				System.out.println("Mod sélectionné: 1vPoutch.");
-
-				File file = Explorer.getFile();
-				CSVDecoder csv = new CSVDecoder(file);
-				CSV=csv.decodeCac();
-				for(int i=0;i<CSV.size();i++){
-					System.out.println(CSV.get(i).toString());
-				}
 
 				launchStuff(listCAC);
 				launch1vPoutch(listCAC);
@@ -55,11 +47,7 @@ public class Main {
 		lc.add(b);
 	}
 	
-	public static void test(){
-		
-		
-		
-	}
+
 	
 	public static void launch1vPoutch(ArrayList lcac){
 		for(int i=0;i<lcac.size();i++){

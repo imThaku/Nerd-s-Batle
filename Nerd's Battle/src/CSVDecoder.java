@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.FileChooser;
 
 public class CSVDecoder {
 	private File file;
@@ -22,10 +23,25 @@ public class CSVDecoder {
 		this.setFile_name(file.getName());
 	}
 	
+	public CSVDecoder() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * 
 	 * @return une Map associant une valeur a une date. null si le fichier ne peut etre lu.
 	 */
+	
+	public File getFile() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Selection fichier");
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files", "*.csv");
+		fileChooser.getExtensionFilters().add(extFilter);
+		file = fileChooser.showOpenDialog(null);
+		return file;
+	}
+	
+	
 	public ArrayList<Cac> decodeCac() throws IOException{
 		String elems[];
 		String line;
