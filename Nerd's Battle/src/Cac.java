@@ -27,7 +27,21 @@ public class Cac {
 		this.valeur = valeur;
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String toString(){
-		return "Cac: "+this.nom+" (+"+valeur+" - "+type+")";
+		if(this.valeur<1){
+			return "Cac: "+this.nom+" (-"+valeur+" - "+type+")";
+		}else if(this.valeur>=1){
+			return "Cac: "+this.nom+" (+"+valeur+" - "+type+")";
+		}
+		return "";
+
 	}
 }
