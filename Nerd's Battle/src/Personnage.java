@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Personnage {
 	private double vita;
@@ -7,6 +8,8 @@ public class Personnage {
 	private double atkspe;
 	private double def;
 	private double defspe;
+	private ArrayList Sort;
+	private Cac cac = new Cac("Coup de poing",1.0,"physique");
 	
 	public Personnage(double vita, double vitesse, double esquive, double atk, double atkspe, double def,double defspe) {
 		this.vita = vita;
@@ -58,6 +61,28 @@ public class Personnage {
 	}
 	public void setDefspe(double defspe) {
 		this.defspe = defspe;
+	}
+	public ArrayList getSort() {
+		return Sort;
+	}
+
+	public void setSort(ArrayList sort) {
+		Sort = sort;
+	}
+
+	public Cac getCac() {
+		return cac;
+	}
+
+	public void setCac(Cac cac) {
+		this.cac = cac;
+	}
+	public boolean isDead(){
+		boolean rtn =false;
+		if(this.vita<=0.0){
+			rtn=true;
+		}
+		return rtn;
 	}
 	
 	
