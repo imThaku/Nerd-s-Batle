@@ -1,0 +1,182 @@
+﻿REGLES / COMMENT JOUER
+
+
+
+
+Le choix de sa classe :
+
+
+Chaque joueur choisit son combattant, guerrier (fort en attaque physique), mage (fort en attaque spé) ou archer (attaque physique moyenne doté d’une bonne esquive et d’une grande vitesse)
+
+
+L’échoppe :
+
+
+Une fois votre personnage choisi vous aurez le choix de passer à l’échoppe pour acheter des équipements et des consommables qui modifieront vos caractéristiques.
+En mode PVP, chaque joueur se verra attribué une somme fixe de 5000 pièces d’or pour s’équiper.
+En mode PVE, le joueur devra gagner ses pièces d’or lui même en progressant à travers le monde de GitTeub et en tuant des ennemis.
+
+
+Les combats :
+
+
+Une fois votre classe choisie et votre équipement acheté le combat commence.
+Vous aurez à chaque tour le choix entre 5 Actions parmi lesquels on retrouve une attaque au corps à corps, 3 sorts de classe dont 1 sort ultime ainsi que la possibilité d’utiliser un consommable sur soi ou sur l’adversaire.
+Le combat est terminé quand les points de vie de votre personnage ou ceux de l’adversaire tombent à zéro.
+
+
+Les sorts de classe :
+
+
+Guerrier : 
+Sort 1 : Vampiro -> Vol X% de vie en fonction des dégâts infligés à l’adversaire.
+Sort 2 : FINISH HIM -> Si l’ennemi à moins de 20% de ses points de vie maximum vous avez 50% de chance le tuer en un coup.
+Sort Ultime : Bouclier de feu -> Pare la prochaine attaque.
+
+
+Mage : 
+Sort 1 : Heal -> Régénère un % de PV en fonction des PV max.
+Sort 2 : Nuage létal -> Inflige X dégâts à l’adversaire pendant X tours.
+Sort Ultime : Foudrix -> Étourdit l’ennemi pendant 3 tours, l'empêchant alors d’effectuer des actions.
+
+
+Archer :
+Sort 1 : Multi-shot -> Tire X flèches.
+Sort 2 : Flèche empoisonnée -> Inflige X dégâts par tour pendant X tours et empêche l’utilisation des soins.
+Sort Ultime : Doge -> Augmente l’esquive de 30 de façon permanente.
+
+
+A noter que les sorts Ultimes ne sont utilisables qu'une seule fois par combat.
+
+
+Mode solo : 
+
+
+Dans ce mode vous affronterez des mob jusqu’à atteindre le boss final.
+A chaque combat remporté vous gagnerez une somme d’argent vous permettant d’améliorer vos caractéristiques en achetant des équipements à l’échoppe qui sera disponible à chaque début de combat.
+Attention le mode solo est punitif, la moindre mort vous fera recommencer de zéro.
+
+
+Bonne chance et amuse toi bien ici !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Scénario
+
+
+Le GitTeub était une contrée paisible depuis des millénaires.Romain des doigts le chasseur équipé de son arc était parti chasser de la femelle avec ses amis Murator le guerrier armé de sa grosse épée et de Harry Pot-de-Fleur le magicien.
+
+
+Une fois arrivé dans la taverne Murator se lâcha sur la piste de danse et impressionna les demoiselles. Rouxi, une magnifique gobelin vînt à lui et ils partagèrent un verre ensemble.
+
+
+Soudainement, des gobelins du village débarquèrent à la recherche de la bande des 3. Ils leurs reprochaient d’avoir séduit Rouxi la fille de leur chef Fombassiette 123 qui était promise au prince du royaume du Mortdort.
+
+
+Les gobelins se mirent à saccager la taverne et se ruèrent sur Murator et ses amis…
+
+
+[Une fois les X premiers combats terminés]
+
+
+Malgré leurs efforts les 3 compères furent capturés et jetés dans les geôles de Fombassiette 123.
+Bien décidé à ne pas laisser l’amour de sa vie lui échapper, Murator implora ses amis de l’aider à sortir de cette cage et de s’attaquer au chef des gobelins en personne afin de récupérer sa dulcinée.
+
+
+Les 3 zéros appelèrent le gardien afin de simuler une envie d’aller aux toilettes pour l'assommer et récupérer ses clés pour s’échapper.
+
+
+[Une fois le combat contre le gardien terminé]
+
+
+Ils arrivèrent dans un couloir et une armée de Gobelin se trouvait face à eux.
+
+
+[Combat jusqu’au boss]
+
+
+Murator et ses amis ont réussi à vaincre leur ennemis.
+Murator alla chercher Rouxi dans sa chambre mais en arrivant c’était trop tard…
+Elle était au lit avec le gobelin maçon Caralho !
+
+
+FIN, murator est toujours puceau. 
+
+
+[Si perdu]
+
+
+Fombassiette 123 ne lâcha rien et tua les 3 zéros…. Murator en train d’agoniser lâcha dans un dernier soupir : Hé merde je resterai puceau….
+
+
+
+
+ 
+
+
+Le choix de sa classe :\n\nChaque joueur choisit son combattant, guerrier (fort en attaque physique), mage (fort en attaque spé) ou archer (attaque physique moyenne doté d’une bonne esquive et d’une grande vitesse)\n\nL’échoppe :\n\nUne fois votre personnage choisi vous aurez le choix de passer à l’échoppe pour acheter des équipements et des consommables qui modifieront vos caractéristiques.\nEn mode PVP, chaque joueur se verra attribué une somme fixe de 5000 pièces d’or pour s’équiper.\nEn mode PVE, le joueur devra gagner ses pièces d’or lui même en progressant à travers le monde de GitTeub et en tuant des ennemis.\n\nLes combats :\n\nUne fois votre classe choisie et votre équipement acheté le combat commence.\nVous aurez à chaque tour le choix entre 5 Actions parmi lesquels on retrouve une attaque au corps à corps, 3 sorts de classe dont 1 sort ultime ainsi que la possibilité d’utiliser un consommable sur soi ou sur l’adversaire.\nLe combat est terminé quand les points de vie de votre personnage ou ceux de l’adversaire tombent à zéro.\n\nLes sorts de classe :\n\nGuerrier :\n\nSort 1 : Vampiro -> Vol X% de vie en fonction des dégâts infligés à l’adversaire.\nSort 2 : FINISH HIM -> Si l’ennemi à moins de 20% de ses points de vie maximum vous avez 50% de chance le tuer en un coup.\nSort Ultime : Bouclier de feu -> Pare la prochaine attaque.\n\nMage :\n\nSort 1 : Heal -> Régénère un % de PV en fonction des PV max.\nSort 2 : Nuage létal -> Inflige X dégâts à l’adversaire pendant X tours.\nSort Ultime : Foudrix -> Étourdit l’ennemi pendant 3 tours, l'empêchant alors d’effectuer des actions.\n\nArcher :\n\nSort 1 : Multi-shot -> Tire X flèches.\nSort 2 : Flèche empoisonnée -> Inflige X dégâts par tour pendant X tours et empêche l’utilisation des soins.\nSort Ultime : Doge -> Augmente l’esquive de 30 de façon permanente.\n\nA noter que les sorts Ultimes ne sont utilisables qu'une seule fois par combat.\n\nMode solo :\nDans ce mode vous affronterez des mob jusqu’à atteindre le boss final.\nA chaque combat remporté vous gagnerez une somme d’argent vous permettant d’améliorer vos caractéristiques en achetant des équipements à l’échoppe qui sera disponible à chaque début de combat.\n\nAttention le mode solo est punitif, la moindre mort vous fera recommencer de zéro.\n\n\nBonne chance et amusez vous bien !
