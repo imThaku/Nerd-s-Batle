@@ -8,9 +8,10 @@ public class Main {
 	public static CSVDecoder CSVArm;
 	public static File cac;
 	public static File arm;
-	public static ArrayList<Cac> listCAC = new ArrayList();
-	public static ArrayList<Armure> listARMURE = new ArrayList();
+	
 	public static void main(String[] args) {
+		ArrayList<Cac> listCAC = new ArrayList();
+		ArrayList<Armure> listARMURE = new ArrayList();
 		System.out.println("Bienvenu dans Nerd's Battle!");
 		System.out.println("Quel mode voulez lancer ?");
 		System.out.println("	1. 1v1 compétitif");
@@ -44,7 +45,7 @@ public class Main {
 					e.printStackTrace();
 				}
 				*/
-				launchStuff();
+				launchStuff(listCAC,listARMURE);
 				launchSelec(listCAC,listARMURE);
 			}	
 			else{
@@ -54,14 +55,16 @@ public class Main {
 		}
 	}
 	
-	public static void launchStuff(){
-		cac=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//src//Arme-Feuille1.csv");
-		arm=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//resources//Equipement-Feuille1.csv");
+	public static void launchStuff(ArrayList<Cac> lc,ArrayList<Armure> la){
+		File test= new File("");
+		String t=test.getPath();
+		cac=new File(test.getAbsolutePath()+"//src//Arme-Feuille1.csv");
+		arm=new File(test.getAbsolutePath()+"//resources//Equipement-Feuille1.csv");
 		CSVCac = new CSVDecoder(cac);
 		CSVArm = new CSVDecoder(arm);
 		try {
-			listCAC=CSVCac.decodeCac();
-			listARMURE=CSVArm.decodeArm();
+			lc.addAll(CSVCac.decodeCac());
+			la.addAll(CSVArm.decodeArm());
 		} catch (IOException e) {
 			System.out.println("Erreure fichier CSV");
 			e.printStackTrace();
@@ -155,6 +158,70 @@ public class Main {
 		}
 	}
 
+	
+	public static void launch1vIA(Personnage perso){
+		monstre poutch = new monstre();
+		int tour=1;
+		while(!perso.isDead() && !poutch.isDead()){
+			if(tour==1){
+				System.out.println("Le combat commence ! Tour 1");
+			}else{
+				System.out.println("Le combat continu, tour "+tour);
+			}
+			if(perso.getVitesse()>poutch.getVitesse()){
+			System.out.println("Vitalité perso:"+perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
+			System.out.println("Selectionnez votre action:");
+			System.out.println("	1. "+perso.getCac().toString2());
+			System.out.println("	2. Sort1");
+			System.out.println("	3. Sort2");
+			System.out.println("	4. Sortulti");
+			System.out.println("	5. Objet");
+			String r ="";
+			double degats;
+			while(r.equals("")){
+				Scanner sc = new Scanner(System.in);
+				r = sc.nextLine();
+				if(r.equals("1")){
+					System.out.println("CAC choisi.");
+					if(perso.getCac().getType().equals("physique")){
+						degats = perso.infligeDegatCac() - poutch.getDef();
+						poutch.subitDegat(degats);
+						System.out.println("Poutch - " + degats + " pv !");
+					}else if(perso.getCac().getType().equals("special")){
+						degats = perso.infligeDegatCacSpe() - poutch.getDefspe();
+						poutch.subitDegat(degats);
+						System.out.println("Poutch - " + degats + " pv !");
+					}
+				}else if(r.equals("2")){
+					System.out.println("Sort1 choisi.");
+
+				}else if(r.equals("3")){
+					System.out.println("Sort2 choisi.");
+
+				}else if(r.equals("4")){
+					System.out.println("SortUlti choisi.");
+
+				}else if(r.equals("5")){
+					System.out.println("Objet choisi.");
+
+				}
+				else{
+					System.out.println("Choisissez une option disponible, 1 ,2, 3, 4 ou 5.");
+					r="";
+				}
+			} 
+				
+			}else {
+				
+			}
+			tour++;
+		}
+		if(perso.getVita()<=0){
+			System.out.println("Vous avez perdu...");
+		} else{
+			System.out.println("Vous avez vaincu ce Poutch!");
+		}
+	}
 	
 	
 	
