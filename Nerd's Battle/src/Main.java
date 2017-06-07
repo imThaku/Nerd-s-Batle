@@ -9,6 +9,8 @@ public class Main {
 	public static File cac;
 	public static File arm;
 	static int debug=0;
+	static Personnage Perso=new Personnage();
+	static int persoC=0;
 	
 	public static void main(String[] args) {
 		ArrayList<Cac> listCAC = new ArrayList();
@@ -39,12 +41,12 @@ public class Main {
 						+ " à la recherche de la bande des 3. Ils leurs reprochaient d’avoir séduit Rouxi la\n"
 						+ " fille de leur chef Fombassiette 123 qui était promise au prince du royaume du\n"
 						+ " Mortdort.Les gobelins se mirent à saccager la taverne et se ruèrent sur Murator et ses amis…");
-				
-				Personnage monstre1=new Personnage();
+				int cpt=1;
+				while(cpt!=5){
 				int rdm = (int) (1 + Math.random() * (4 - 1 + 1));
 				
-				System.out.println("\n COMBAT 1");
-				
+				System.out.println("\n COMBAT "+cpt);
+				Personnage monstre1=new Personnage();
 				switch(rdm){
 					case 1 :
 						monstre1 = new GobelinDisquetteur();
@@ -64,11 +66,11 @@ public class Main {
 						System.out.println("\n Attention un Punchlino Gob apparaît !!");
 						break;
 				}
-				
+				cpt++;
 				launchStuff(listCAC,listARMURE);
 				launchSelec(listCAC,listARMURE,monstre1);
 				
-				
+				}
 				
 				
 				
@@ -106,8 +108,8 @@ public class Main {
 	public static void launchStuff(ArrayList<Cac> lc,ArrayList<Armure> la){
 		File test= new File("");
 		String t=test.getPath();
-		cac=new File(test.getAbsolutePath()+"//src//Arme-Feuille1.csv");
-		arm=new File(test.getAbsolutePath()+"//resources//Equipement-Feuille1.csv");
+		cac=new File(test.getAbsolutePath()+"//rsc//Arme-Feuille1.csv");
+		arm=new File(test.getAbsolutePath()+"//rsc//Equipement-Feuille1.csv");
 		CSVCac = new CSVDecoder(cac);
 		CSVArm = new CSVDecoder(arm);
 		try {
@@ -120,7 +122,7 @@ public class Main {
 	}
 	
 	public static void launchSelec(ArrayList<Cac> lcac,ArrayList<Armure> larm,Personnage monstre){
-		Personnage perso = null;
+		if(persoC==0){
 		System.out.println("Quelle classe voulez-vous jouer ?");
 		System.out.println("	1. Guerrier");
 		System.out.println("	2. Mage");
@@ -131,34 +133,37 @@ public class Main {
 			r = sc.nextLine();
 			if(r.equals("1")){
 				System.out.println("Guerrier choisi.");
-				perso = new Guerrier();
+				Perso = new Guerrier();
 			}else if(r.equals("2")){
 				System.out.println("Mage choisi.");
-				perso = new Mage();
+				Perso = new Mage();
 			}else if(r.equals("3")){
 				System.out.println("Archer choisi.");
-				perso = new Archer();
+				Perso = new Archer();
 			}
 			else{
 				System.out.println("Choisissez une classe disponible, 1 ,2 ou 3.");
 				r="";
 			}
 		}
-		launchMagasin(lcac,larm,perso,monstre);
+		persoC=1;
+		launchMagasin(lcac,larm,Perso,monstre);
+		}
+		launchMagasin(lcac,larm,Perso,monstre);
 	}
 	
 	public static void launch1vPoutch(ArrayList lcac,Personnage perso){
 		Poutch poutch = new Poutch();
 		int tour=1;
-		while(!perso.isDead() && !poutch.isDead()){
+		while(!Perso.isDead() && !poutch.isDead()){
 			if(tour==1){
 				System.out.println("Le combat commence ! Tour 1");
 			}else{
 				System.out.println("Le combat continu, tour "+tour);
 			}
-			System.out.println("Vitalité perso:"+perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
+			System.out.println("Vitalité Perso:"+Perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
 			System.out.println("Selectionnez votre action:");
-			System.out.println("	1. "+perso.getCac().toString2());
+			System.out.println("	1. "+Perso.getCac().toString2());
 			System.out.println("	2. Sort1");
 			System.out.println("	3. Sort2");
 			System.out.println("	4. Sortulti");
@@ -170,12 +175,12 @@ public class Main {
 				r = sc.nextLine();
 				if(r.equals("1")){
 					System.out.println("CAC choisi.");
-					if(perso.getCac().getType().equals("physique")){
-						degats = perso.infligeDegatCac() - poutch.getDef();
+					if(Perso.getCac().getType().equals("physique")){
+						degats = Perso.infligeDegatCac() - poutch.getDef();
 						poutch.subitDegat(degats);
 						System.out.println("Poutch - " + degats + " pv !");
-					}else if(perso.getCac().getType().equals("special")){
-						degats = perso.infligeDegatCacSpe() - poutch.getDefspe();
+					}else if(Perso.getCac().getType().equals("special")){
+						degats = Perso.infligeDegatCacSpe() - poutch.getDefspe();
 						poutch.subitDegat(degats);
 						System.out.println("Poutch - " + degats + " pv !");
 					}
@@ -199,7 +204,7 @@ public class Main {
 			}
 			tour++;
 		}
-		if(perso.getVita()<=0){
+		if(Perso.getVita()<=0){
 			System.out.println("Vous avez perdu...");
 		} else{
 			System.out.println("Vous avez vaincu ce Poutch!");
@@ -210,16 +215,16 @@ public class Main {
 	public static void launch1vIA(ArrayList lcac, Personnage perso,Personnage poutch){
 		
 		int tour=1;
-		while(!perso.isDead() && !poutch.isDead()){
+		while(!Perso.isDead() && !poutch.isDead()){
 			if(tour==1){
 				System.out.println("Le combat commence ! Tour 1");
 			}else{
 				System.out.println("Le combat continu, tour "+tour);
 			}
-			if(perso.getVitesse()>poutch.getVitesse()){
-			System.out.println("Vitalité perso:"+perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
+			if(Perso.getVitesse()>poutch.getVitesse()){
+			System.out.println("Vitalité Perso:"+Perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
 			System.out.println("Selectionnez votre action:");
-			System.out.println("	1. "+perso.getCac().toString2());
+			System.out.println("	1. "+Perso.getCac().toString2());
 			System.out.println("	2. Sort1");
 			System.out.println("	3. Sort2");
 			System.out.println("	4. Sortulti");
@@ -231,12 +236,12 @@ public class Main {
 				r = sc.nextLine();
 				if(r.equals("1")){
 					System.out.println("CAC choisi.");
-					if(perso.getCac().getType().equals("physique")){
-						degats = perso.infligeDegatCac() - poutch.getDef();
+					if(Perso.getCac().getType().equals("physique")){
+						degats = Perso.infligeDegatCac() - poutch.getDef();
 						poutch.subitDegat(degats);
 						System.out.println("Poutch - " + degats + " pv !");
-					}else if(perso.getCac().getType().equals("special")){
-						degats = perso.infligeDegatCacSpe() - poutch.getDefspe();
+					}else if(Perso.getCac().getType().equals("special")){
+						degats = Perso.infligeDegatCacSpe() - poutch.getDefspe();
 						poutch.subitDegat(degats);
 						System.out.println("Poutch - " + degats + " pv !");
 					}
@@ -258,20 +263,20 @@ public class Main {
 					r="";
 				}
 			} 
-			degats = poutch.infligeDegatCac() - perso.getDef();
-			perso.subitDegat(degats);
+			degats = poutch.infligeDegatCac() - Perso.getDef();
+			Perso.subitDegat(degats);
 			System.out.println("Perso - " + degats + " pv !");
 			
-			}else if (poutch.getVitesse()>perso.getVitesse()){
+			}else if (poutch.getVitesse()>Perso.getVitesse()){
 				// Jeux de l'ia
 				Double degats;
-				degats = poutch.infligeDegatCac() - perso.getDef();
-				perso.subitDegat(degats);
+				degats = poutch.infligeDegatCac() - Perso.getDef();
+				Perso.subitDegat(degats);
 				System.out.println("Perso - " + degats + " pv !");
 				
-				System.out.println("Vitalité perso:"+perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
+				System.out.println("Vitalité Perso:"+Perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
 				System.out.println("Selectionnez votre action:");
-				System.out.println("	1. "+perso.getCac().toString2());
+				System.out.println("	1. "+Perso.getCac().toString2());
 				System.out.println("	2. Sort1");
 				System.out.println("	3. Sort2");
 				System.out.println("	4. Sortulti");
@@ -282,12 +287,12 @@ public class Main {
 					r = sc.nextLine();
 					if(r.equals("1")){
 						System.out.println("CAC choisi.");
-						if(perso.getCac().getType().equals("physique")){
-							degats = perso.infligeDegatCac() - poutch.getDef();
+						if(Perso.getCac().getType().equals("physique")){
+							degats = Perso.infligeDegatCac() - poutch.getDef();
 							poutch.subitDegat(degats);
 							System.out.println("Poutch - " + degats + " pv !");
-						}else if(perso.getCac().getType().equals("special")){
-							degats = perso.infligeDegatCacSpe() - poutch.getDefspe();
+						}else if(Perso.getCac().getType().equals("special")){
+							degats = Perso.infligeDegatCacSpe() - poutch.getDefspe();
 							poutch.subitDegat(degats);
 							System.out.println("Poutch - " + degats + " pv !");
 						}
@@ -312,7 +317,7 @@ public class Main {
 			}
 			tour++;
 		}
-		if(perso.getVita()<=0){
+		if(Perso.getVita()<=0){
 			System.out.println("Vous avez perdu...");
 		} else{
 			System.out.println("Vous avez vaincu ce Poutch!");
@@ -330,7 +335,7 @@ public class Main {
 	
 	private static void launchMagasin(ArrayList lcac,ArrayList larm, Personnage perso,Personnage monstre) {
 		System.out.println("Bienvnue dans l'échoppe !");
-		System.out.println("Vous disposer de "+perso.getGold()+" pièces d'or, voulez vous acheter des équipement ?");
+		System.out.println("Vous disposer de "+Perso.getGold()+" pièces d'or, voulez vous acheter des équipement ?");
 		System.out.println("	1. Oui");
 		System.out.println("	2. Non");
 		String r ="";
@@ -360,12 +365,12 @@ public class Main {
 							r = sc2.nextLine();
 							int q = Integer.parseInt(r);
 							if(q>=0 && q<lcac.size()){
-								perso.setCac((Cac) lcac.get(q));
-								perso.setGold(perso.getGold()-perso.getCac().getPrix());
-								System.out.println("Vous avez choisi "+perso.getCac().getNom());
-								launchMagasin(lcac,larm,perso,monstre);
+								Perso.setCac((Cac) lcac.get(q));
+								Perso.setGold(Perso.getGold()-Perso.getCac().getPrix());
+								System.out.println("Vous avez choisi "+Perso.getCac().getNom());
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else if(q==o){
-								launchMagasin(lcac,larm,perso,monstre);
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else{
 								System.out.println("Choisissez une option disponible.");
 								r="";
@@ -385,12 +390,12 @@ public class Main {
 							r = sc2.nextLine();
 							int q = Integer.parseInt(r);
 							if(q>=0 && q<larm.size()){
-								perso.setArmure((Armure)larm.get(q));
-								perso.setGold(perso.getGold()-perso.getArmure().getPrix());
-								System.out.println("Vous avez choisi "+perso.getArmure().getNom());
-								launchMagasin(lcac,larm,perso,monstre);
+								Perso.setArmure((Armure)larm.get(q));
+								Perso.setGold(Perso.getGold()-Perso.getArmure().getPrix());
+								System.out.println("Vous avez choisi "+Perso.getArmure().getNom());
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else if(q==o){
-								launchMagasin(lcac,larm,perso,monstre);
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else{
 								System.out.println("Choisissez une option disponible.");
 								r="";
@@ -417,10 +422,10 @@ public class Main {
 		}
 		System.out.println("Vous sortez de l'échoppe.");
 		if(debug==0){
-			launch1vPoutch(lcac,perso);
+			launch1vPoutch(lcac,Perso);
 		}else{
 			
-			launch1vIA(lcac,perso,monstre);
+			launch1vIA(lcac,Perso,monstre);
 		}
 	}
 

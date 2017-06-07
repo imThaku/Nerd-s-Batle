@@ -32,6 +32,11 @@ public class Personnage {
 	}
 	
 	
+	public Personnage() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public double getVitaMAX() {
 		return vitaMAX;
 	}
