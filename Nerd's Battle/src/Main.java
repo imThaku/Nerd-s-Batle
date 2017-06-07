@@ -26,15 +26,77 @@ public class Main {
 				System.out.println("Mod sélectionné: 1v1 compétitif.");
 				//launch1v1();
 			}else if(r.equals("2")){
-				System.out.println("Mode en dev");
 				debug=2;
 				// monstre a creer
+<<<<<<< HEAD
 				Fombassiette monstre= new Fombassiette();
+=======
+				
+				System.out.println("Bienvenue dans le mode campagne");
+				System.out.println("Le GitTeub était une contrée paisible depuis des millénaires.Romain \n"
+						+ "des doigts le chasseur équipé de son arc était parti chasser de la femelle avec\n"
+						+ " ses amis Murator le guerrier armé de sa grosse épée et de Harry Pot-de-Fleur le\n"
+						+ " magicien.Une fois arrivé dans la taverne Murator se lâcha sur la piste de danse \n"
+						+ "et impressionna les demoiselles. Rouxi, une magnifique gobelin vînt à lui et ils\n"
+						+ " partagèrent un verre ensemble.Soudainement, des gobelins du village débarquèrent\n"
+						+ " à la recherche de la bande des 3. Ils leurs reprochaient d’avoir séduit Rouxi la\n"
+						+ " fille de leur chef Fombassiette 123 qui était promise au prince du royaume du\n"
+						+ " Mortdort.Les gobelins se mirent à saccager la taverne et se ruèrent sur Murator et ses amis…");
+				
+				Personnage monstre1=new Personnage();
+				int rdm = (int) (1 + Math.random() * (4 - 1 + 1));
+				
+				System.out.println("\n COMBAT 1");
+				
+				switch(rdm){
+					case 1 :
+						monstre1 = new GobelinDisquetteur();
+						System.out.println("\n Attention un Gobelin Disquetteur apparaît !!");
+						
+						break;
+					case 2 : 
+						monstre1 = new GobTout();
+						System.out.println("\n Attention un Gob'Tout apparaît !!");
+						break;
+					case 3 : 
+						monstre1 = new GobalElite();
+						System.out.println("\n Attention un Gobal Elite apparaît !!");
+						break;
+					case 4 : 
+						monstre1 = new PunchlinoGob();
+						System.out.println("\n Attention un Punchlino Gob apparaît !!");
+						break;
+				}
+				
+>>>>>>> 0a848e49aadcdbf8b38991d5378588eb75c3ca61
 				launchStuff(listCAC,listARMURE);
-				launchSelec(listCAC,listARMURE,monstre);
+				launchSelec(listCAC,listARMURE,monstre1);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 			}else if(r.equals("3")){
 				System.out.println("Mod sélectionné: 1vPoutch.");
+<<<<<<< HEAD
 				/*
 				cac=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//src//Arme-Feuille1.csv");
 				arm=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//resources//Equipement-Feuille1.csv");
@@ -53,8 +115,11 @@ public class Main {
 				}
 				*/
 				Fombassiette monstre= new Fombassiette();
+=======
+				Personnage monstre1=new Personnage();
+>>>>>>> 0a848e49aadcdbf8b38991d5378588eb75c3ca61
 				launchStuff(listCAC,listARMURE);
-				launchSelec(listCAC,listARMURE,monstre);
+				launchSelec(listCAC,listARMURE,monstre1);
 			}	
 			else{
 				System.out.println("Choisissez un mode valide, 1 ,2 ou 3.");
