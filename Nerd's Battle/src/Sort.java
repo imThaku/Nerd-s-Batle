@@ -6,57 +6,34 @@ import com.sun.javafx.geom.transform.GeneralTransform3D;
 public class Sort {
 	private String nom;
 	private double coeff_degats;
-	private double coeff_soins;
-	private String type; 
+	private String description;
 	
-	
-	
-	public Sort(String nom, double coeff_degats, double coeff_soins, String type) {
-		super();
+	public Sort(String nom, double coeff_degat, String description){
 		this.nom = nom;
-		this.coeff_degats = coeff_degats;
-		this.coeff_soins = coeff_soins;
-		this.type = type;
-	}
-
-	public String getNomArme(){
-		return this.nom;
+		this.coeff_degats = coeff_degat;
+		this.description = description;
 	}
 	
-	public double getCoeffDegatSort(){
+	public double getValeurSort(){
 		return this.coeff_degats;
 	}
-
+	
 	public String getNom() {
 		return nom;
 	}
-
+	public String getDescription(){
+		return this.description;
+	}
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-	public double getCoeff_degats() {
-		return coeff_degats;
-	}
-
+	
+	
 	public void setCoeff_degats(double coeff_degats) {
 		this.coeff_degats = coeff_degats;
 	}
 
-	public double getCoeff_soins() {
-		return coeff_soins;
+	public void getEffect(Personnage p1, Personnage p2, Dot dot){
+		
 	}
-
-	public void setCoeff_soins(double coeff_soins) {
-		this.coeff_soins = coeff_soins;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-	
 }

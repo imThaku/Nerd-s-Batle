@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,21 +37,19 @@ public class CSVDecoder {
 		String elems[];
 		String line;
 		FileInputStream fis;
-		
 		ArrayList<Cac> CSV = new ArrayList<Cac>();
 		if(!file.canRead()) return null;
 		fis = new FileInputStream(file);
 		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 		int cpt=0;
 		while((line = br.readLine()) != null){
-			elems = line.split(",");
-			if(elems.length == 9){
+			elems = line.split(";");
+			if(elems.length == 11){
 				if (cpt>=1){
 					
 				
-			Cac cac1 = new Cac (elems[0],Double.parseDouble(elems[8]),"cacs", Double.parseDouble(elems[1]),Double.parseDouble(elems[2]), Double.parseDouble(elems[3]),Double.parseDouble(elems[4]),Double.parseDouble(elems[5]),Double.parseDouble(elems[6]),Double.parseDouble(elems[7]),1);
+			Cac cac1 = new Cac (elems[0],Double.parseDouble(elems[8]),elems[10], Double.parseDouble(elems[1]),Double.parseDouble(elems[2]), Double.parseDouble(elems[3]),Double.parseDouble(elems[4]),Double.parseDouble(elems[5]),Double.parseDouble(elems[6]),Double.parseDouble(elems[7]), Double.parseDouble(elems[9]));
 			CSV.add(cac1);
-			//System.out.println(cac1.toString2());
 			}
 			cpt++;
 			//System.out.println(cac1.toString2());
@@ -73,14 +70,14 @@ public class CSVDecoder {
 		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 		int cpt=0;
 		while((line = br.readLine()) != null){
-			elems = line.split(",");
+			elems = line.split(";");
 			if(elems.length == 9){
 				if (cpt>=1){
 					
 				
-			Armure arm = new Armure (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Integer.parseInt(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),Integer.parseInt(elems[8]));
+			Armure arm = new Armure (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Double.parseDouble(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),Integer.parseInt(elems[8]));
 			CSV.add(arm);	
-			//System.out.println(cac1.toString2());
+			//System.out.println(arm.toString());
 			}
 			cpt++;
 			//System.out.println(cac1.toString2());

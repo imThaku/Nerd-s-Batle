@@ -1,8 +1,6 @@
 
-public class Cac {
+public class Objet {
 	private String nom;
-	private double valeur;
-	private String type;
 	private double BONUSvita;
 	private double BONUSvitesse;
 	private double BONUSesquive;
@@ -11,19 +9,10 @@ public class Cac {
 	private double BONUSdef;
 	private double BONUSdefspe;
 	private double prix;
-	
-	public Cac(String nom, double valeur,String type) {
-		this.nom = nom;
-		this.valeur = valeur;
-		this.type=type;
-	}
-	
-	
+	private int nbTour;
 
-	public Cac(String nom, double valeur, String type, double bONUSvita, double bONUSvitesse, double bONUSesquive,double bONUSatk, double bONUSatkspe, double bONUSdef, double bONUSdefspe,double prix) {
+	public Objet(String nom,double bONUSvita, double bONUSvitesse, double bONUSesquive,double bONUSatk, double bONUSatkspe, double bONUSdef, double bONUSdefspe,double prix) {
 		this.nom = nom;
-		this.valeur = valeur;
-		this.type = type;
 		BONUSvita = bONUSvita;
 		BONUSvitesse = bONUSvitesse;
 		BONUSesquive = bONUSesquive;
@@ -36,6 +25,34 @@ public class Cac {
 
 	
 	
+	public Objet(String nom2, double bONUSvita2, double bONUSvitesse2, double bONUSesquive2, double bONUSatk2,
+			double bONUSatkspe2, double bONUSdef2, double bONUSdefspe2, int prix2,int nbTour) {
+		this.nom = nom2;
+		BONUSvita = bONUSvita2;
+		BONUSvitesse = bONUSvitesse2;
+		BONUSesquive = bONUSesquive2;
+		BONUSatk = bONUSatk2;
+		BONUSatkspe = bONUSatkspe2;
+		BONUSdef = bONUSdef2;
+		BONUSdefspe = bONUSdefspe2;
+		this.prix=prix2;
+		this.nbTour=nbTour;
+	}
+
+
+
+	public int getNbTour() {
+		return nbTour;
+	}
+
+
+
+	public void setNbTour(int nbTour) {
+		this.nbTour = nbTour;
+	}
+
+
+
 	public double getBONUSvita() {
 		return BONUSvita;
 	}
@@ -140,39 +157,15 @@ public class Cac {
 		this.nom = nom;
 	}
 
-	public double getValeur() {
-		return valeur;
-	}
-
-	public void setValeur(double valeur) {
-		this.valeur = valeur;
-	}
-	
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public String toString2(){
-		if(this.valeur<1){
-			return "Cac: "+this.nom+" (-"+valeur+" - "+type+")";
-		}else if(this.valeur>=1){
-			return "Cac: "+this.nom+" (+"+valeur+" - "+type+")";
-		}
-		return "";
+			return "Objet: "+this.nom;
 
 	}
 	
 	public String toString(){
-		if(this.valeur<1){
-			return "Cac: "+this.nom+" (-"+valeur+" - "+type+" /vita "+this.BONUSvita+" /vit "+this.BONUSvitesse+" /esq "+this.BONUSesquive+" /atk "+this.BONUSatk+" /atkspe "+this.BONUSatkspe+" /def "+this.BONUSdef+" /defspe "+this.BONUSdefspe+") "+this.prix+" Pièces d'or";                                          
-		}else if(this.valeur>=1){
-			return "Cac: "+this.nom+" (+"+valeur+" - "+type+" /vita "+this.BONUSvita+" /vit "+this.BONUSvitesse+" /esq "+this.BONUSesquive+" /atk "+this.BONUSatk+" /atkspe "+this.BONUSatkspe+" /def "+this.BONUSdef+" /defspe "+this.BONUSdefspe+") "+this.prix+" Pièces d'or";
-		}
-		return "";
+			return "Objet: "+this.nom+" ( /vita "+this.BONUSvita+" /vit "+this.BONUSvitesse+" /esq "+this.BONUSesquive+" /atk "+this.BONUSatk+" /atkspe "+this.BONUSatkspe+" /def "+this.BONUSdef+" /defspe "+this.BONUSdefspe+") "+this.prix+" Pièces d'or";
 
 	}
 }
+
+

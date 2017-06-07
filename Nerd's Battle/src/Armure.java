@@ -2,14 +2,14 @@ public class Armure {
 	private String nom;
 	private int bonus_vita;
 	private int bonus_vitesse;
-	private int bonus_esquive;
+	private double bonus_esquive;
 	private int bonus_attaque;
 	private int bonus_attaqueSpe;
 	private int bonus_def;
 	private int bonus_defSpe;
 	private int prix;
 	
-	public Armure(String nom,int vita, int vitesse, int esquive, int attaque, int attaqueSpe, int def, int defSpe,int prix){
+	public Armure(String nom,int vita, int vitesse, double esquive, int attaque, int attaqueSpe, int def, int defSpe,int prix){
 		this.nom = nom;
 		this.bonus_vita = vita;
 		this.bonus_vitesse = vitesse;
@@ -43,7 +43,7 @@ public class Armure {
 		return bonus_vitesse;
 	}
 
-	public int getBonus_esquive() {
+	public double getBonus_esquive() {
 		return bonus_esquive;
 	}
 

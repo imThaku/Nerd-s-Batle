@@ -5,7 +5,8 @@ public class Poutch extends Personnage{
 	private Cac cac = new Cac("Trempette",0.0,"physique");
 
 	public Poutch() {
-		super(100, 0, 0, 0, 0, 0, 0);
+		super(500, 0, 0, 0, 0, 0, 0);
+		this.setNom("Poutch");
 	}
 
 	public ArrayList getSort() {
