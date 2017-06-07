@@ -1,10 +1,16 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+	public static CSVDecoder CSVCac;
+	public static CSVDecoder CSVArm;
+	public static File cac;
+	public static File arm;
+	public static ArrayList<Cac> listCAC = new ArrayList();
+	public static ArrayList<Armure> listARMURE = new ArrayList();
 	public static void main(String[] args) {
-		ArrayList<Cac> listCAC = new ArrayList();
-		ArrayList<Armure> listARMURE = new ArrayList();
 		System.out.println("Bienvenu dans Nerd's Battle!");
 		System.out.println("Quel mode voulez lancer ?");
 		System.out.println("	1. 1v1 compétitif");
@@ -21,9 +27,26 @@ public class Main {
 				System.out.println("Mode en dev");
 			}else if(r.equals("3")){
 				System.out.println("Mod sélectionné: 1vPoutch.");
-				launchStuff(listCAC,listARMURE);
+				/*
+				cac=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//src//Arme-Feuille1.csv");
+				arm=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//resources//Equipement-Feuille1.csv");
+				CSVCac = new CSVDecoder(cac);
+				CSVArm = new CSVDecoder(arm);
+				try {
+					listCAC=CSVCac.decodeCac();
+					listARMURE=CSVArm.decodeArm();
+					for (int i=0;i<listCAC.size();i++){
+						System.out.println(listCAC.get(i).toString2());
+						System.out.println(listARMURE.get(i).toString());
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				*/
+				launchStuff();
 				launchSelec(listCAC,listARMURE);
-			}
+			}	
 			else{
 				System.out.println("Choisissez un mode valide, 1 ,2 ou 3.");
 				r="";
@@ -31,31 +54,21 @@ public class Main {
 		}
 	}
 	
-	public static void launchStuff(ArrayList lc,ArrayList la){
-		Cac a = new Cac("Hacharnée",2.0,"physique",0,6,0,8,0,0,0,2000);
-		lc.add(a);
-		Cac b = new Cac("Kal'Hache",1.2,"physique",0,10,0,8,0,0,0,1700);
-		lc.add(b);
-		Cac c = new Cac("Epée Nice",1.5,"physique",0,5,2,6,0,0,0,1800);
-		lc.add(c);
-		Cac d = new Cac("Fist",1.1,"physique",0,2,0,1,0,0,0,1250);
-		lc.add(d);
-		
-		Armure a1 = new Armure("Cap'illaire",2,-9,-1,6,-7,8,-6, 1000);
-		Armure a2 = new Armure("CouafWaf",-6,1,-9,-9,-2,10,2 ,1000);
-		Armure a3 = new Armure("Sombre Héros",10,10,-6,-6,5,-3,0,1000);
-		Armure a4 = new Armure("Bott'ade",-5,-10,0,-5,7,1,4,1000);
-		Armure a5 = new Armure("Sandalousie",9,-9,0,8,1,-7,5,1000);
-		Armure a6 = new Armure("Centdalmatien",-1,-3,-2,-9,1,-5,9,1000);
-		la.add(a1);
-		la.add(a2);
-		la.add(a3);
-		la.add(a4);
-		la.add(a5);
-		la.add(a6);
+	public static void launchStuff(){
+		cac=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//src//Arme-Feuille1.csv");
+		arm=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//resources//Equipement-Feuille1.csv");
+		CSVCac = new CSVDecoder(cac);
+		CSVArm = new CSVDecoder(arm);
+		try {
+			listCAC=CSVCac.decodeCac();
+			listARMURE=CSVArm.decodeArm();
+		} catch (IOException e) {
+			System.out.println("Erreure fichier CSV");
+			e.printStackTrace();
+		}
 	}
 	
-	public static void launchSelec(ArrayList lcac,ArrayList larm){
+	public static void launchSelec(ArrayList<Cac> lcac,ArrayList<Armure> larm){
 		Personnage perso = null;
 		System.out.println("Quelle classe voulez-vous jouer ?");
 		System.out.println("	1. Guerrier");
@@ -142,6 +155,16 @@ public class Main {
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static void launchMagasin(ArrayList lcac,ArrayList larm, Personnage perso) {
 		System.out.println("Bienvnue dans l'échoppe !");
 		System.out.println("Vous disposer de "+perso.getGold()+" pièces d'or, voulez vous acheter des équipement ?");

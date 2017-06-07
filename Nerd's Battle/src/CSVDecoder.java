@@ -32,14 +32,6 @@ public class CSVDecoder {
 	 * @return une Map associant une valeur a une date. null si le fichier ne peut etre lu.
 	 */
 	
-	public File getFile() {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Selection fichier");
-		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files", "*.csv");
-		fileChooser.getExtensionFilters().add(extFilter);
-		file = fileChooser.showOpenDialog(null);
-		return file;
-	}
 	
 	
 	public ArrayList<Cac> decodeCac() throws IOException{
@@ -51,13 +43,47 @@ public class CSVDecoder {
 		if(!file.canRead()) return null;
 		fis = new FileInputStream(file);
 		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+		int cpt=0;
 		while((line = br.readLine()) != null){
-			int cpt=0;
 			elems = line.split(",");
 			if(elems.length == 9){
-			Cac cac1 = new Cac (elems[0],Integer.parseInt(elems[5]),"Mele");
-			CSV.add(cpt, cac1);
+				if (cpt>=1){
+					
+				
+			Cac cac1 = new Cac (elems[0],Double.parseDouble(elems[8]),"cacs", Double.parseDouble(elems[1]),Double.parseDouble(elems[2]), Double.parseDouble(elems[3]),Double.parseDouble(elems[4]),Double.parseDouble(elems[5]),Double.parseDouble(elems[6]),Double.parseDouble(elems[7]), Double.parseDouble(elems[8]));
+			CSV.add(cac1);
+			//System.out.println(cac1.toString2());
+			}
 			cpt++;
+			//System.out.println(cac1.toString2());
+			}
+		}
+		br.close();
+		return CSV;
+	}
+	
+	public ArrayList<Armure> decodeArm() throws IOException{
+		String elems[];
+		String line;
+		FileInputStream fis;
+		
+		ArrayList<Armure> CSV = new ArrayList<>();
+		if(!file.canRead()) return null;
+		fis = new FileInputStream(file);
+		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+		int cpt=0;
+		while((line = br.readLine()) != null){
+			elems = line.split(",");
+			if(elems.length == 8){
+				if (cpt>=1){
+					
+				
+			Armure arm = new Armure (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Integer.parseInt(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),1);
+			CSV.add(arm);	
+			//System.out.println(cac1.toString2());
+			}
+			cpt++;
+			//System.out.println(cac1.toString2());
 			}
 		}
 		br.close();
