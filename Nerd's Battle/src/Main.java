@@ -6,14 +6,13 @@ import java.util.Scanner;
 public class Main {
 	public static CSVDecoder CSVCac;
 	public static CSVDecoder CSVArm;
-	public static CSVDecoder CSVObj;
 	public static File cac;
 	public static File arm;
-	public static File obj;
+	static int debug=0;
+	
 	public static void main(String[] args) {
 		ArrayList<Cac> listCAC = new ArrayList();
 		ArrayList<Armure> listARMURE = new ArrayList();
-		ArrayList<Objet> listObjet = new ArrayList();
 		System.out.println("Bienvenu dans Nerd's Battle!");
 		System.out.println("Quel mode voulez lancer ?");
 		System.out.println("	1. 1v1 compétitif");
@@ -27,12 +26,76 @@ public class Main {
 				System.out.println("Mod sélectionné: 1v1 compétitif.");
 				//launch1v1();
 			}else if(r.equals("2")){
-				System.out.println("Mode en dev");
+				debug=2;
+				// monstre a creer
+				
+				System.out.println("Bienvenue dans le mode campagne");
+				System.out.println("Le GitTeub était une contrée paisible depuis des millénaires.Romain \n"
+						+ "des doigts le chasseur équipé de son arc était parti chasser de la femelle avec\n"
+						+ " ses amis Murator le guerrier armé de sa grosse épée et de Harry Pot-de-Fleur le\n"
+						+ " magicien.Une fois arrivé dans la taverne Murator se lâcha sur la piste de danse \n"
+						+ "et impressionna les demoiselles. Rouxi, une magnifique gobelin vînt à lui et ils\n"
+						+ " partagèrent un verre ensemble.Soudainement, des gobelins du village débarquèrent\n"
+						+ " à la recherche de la bande des 3. Ils leurs reprochaient d’avoir séduit Rouxi la\n"
+						+ " fille de leur chef Fombassiette 123 qui était promise au prince du royaume du\n"
+						+ " Mortdort.Les gobelins se mirent à saccager la taverne et se ruèrent sur Murator et ses amis…");
+				
+				Personnage monstre1=new Personnage();
+				int rdm = (int) (1 + Math.random() * (4 - 1 + 1));
+				
+				System.out.println("\n COMBAT 1");
+				
+				switch(rdm){
+					case 1 :
+						monstre1 = new GobelinDisquetteur();
+						System.out.println("\n Attention un Gobelin Disquetteur apparaît !!");
+						
+						break;
+					case 2 : 
+						monstre1 = new GobTout();
+						System.out.println("\n Attention un Gob'Tout apparaît !!");
+						break;
+					case 3 : 
+						monstre1 = new GobalElite();
+						System.out.println("\n Attention un Gobal Elite apparaît !!");
+						break;
+					case 4 : 
+						monstre1 = new PunchlinoGob();
+						System.out.println("\n Attention un Punchlino Gob apparaît !!");
+						break;
+				}
+				
+				launchStuff(listCAC,listARMURE);
+				launchSelec(listCAC,listARMURE,monstre1);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			}else if(r.equals("3")){
 				System.out.println("Mod sélectionné: 1vPoutch.");
-				launchStuff(listCAC,listARMURE,listObjet);
-				launchSelec(listCAC,listARMURE);
-			}
+				Personnage monstre1=new Personnage();
+				launchStuff(listCAC,listARMURE);
+				launchSelec(listCAC,listARMURE,monstre1);
+			}	
 			else{
 				System.out.println("Choisissez un mode valide, 1 ,2 ou 3.");
 				r="";
@@ -40,11 +103,11 @@ public class Main {
 		}
 	}
 	
-	public static void launchStuff(ArrayList<Cac> lc,ArrayList<Armure> la,ArrayList<Objet> lo){
+	public static void launchStuff(ArrayList<Cac> lc,ArrayList<Armure> la){
 		File test= new File("");
 		String t=test.getPath();
-		cac=new File(test.getAbsolutePath()+"//rsc//Arme-Feuille1.csv");
-		arm=new File(test.getAbsolutePath()+"//rsc//Equipement-Feuille1.csv");
+		cac=new File(test.getAbsolutePath()+"//src//Arme-Feuille1.csv");
+		arm=new File(test.getAbsolutePath()+"//resources//Equipement-Feuille1.csv");
 		CSVCac = new CSVDecoder(cac);
 		CSVArm = new CSVDecoder(arm);
 		try {
@@ -53,13 +116,10 @@ public class Main {
 		} catch (IOException e) {
 			System.out.println("Erreure fichier CSV");
 			e.printStackTrace();
-		}		
-		Objet o1 = new Objet("CocoColo",50,50,50,0,0,0,0,1000,5);
-		lo.add(o1);
-		
+		}
 	}
 	
-	public static void launchSelec(ArrayList lcac,ArrayList larm){
+	public static void launchSelec(ArrayList<Cac> lcac,ArrayList<Armure> larm,Personnage monstre){
 		Personnage perso = null;
 		System.out.println("Quelle classe voulez-vous jouer ?");
 		System.out.println("	1. Guerrier");
@@ -70,45 +130,27 @@ public class Main {
 			Scanner sc = new Scanner(System.in);
 			r = sc.nextLine();
 			if(r.equals("1")){
-				perso = new Guerrier();
-				Sort g1 = new Vampiro();
-				Sort g2 = new DernierCoup();
-				Sort g3 = new Parade();
-				perso.addSort(g1);
-				perso.addSort(g2);
-				perso.addSort(g3);
-				perso.setNom("Aventurier");
 				System.out.println("Guerrier choisi.");
+				perso = new Guerrier();
 			}else if(r.equals("2")){
 				System.out.println("Mage choisi.");
 				perso = new Mage();
-				perso.setNom("Aventurier");
 			}else if(r.equals("3")){
 				System.out.println("Archer choisi.");
 				perso = new Archer();
-				perso.setNom("Aventurier");
 			}
 			else{
 				System.out.println("Choisissez une classe disponible, 1 ,2 ou 3.");
 				r="";
 			}
 		}
-		launchMagasin(lcac,larm,perso);
+		launchMagasin(lcac,larm,perso,monstre);
 	}
 	
 	public static void launch1vPoutch(ArrayList lcac,Personnage perso){
 		Poutch poutch = new Poutch();
-		Dot dot= new Dot(perso,poutch);
 		int tour=1;
 		while(!perso.isDead() && !poutch.isDead()){
-			perso.appliqueEffetPositif();
-			perso.appliqueEffetNegatif();
-			poutch.appliqueEffetPositif();
-			poutch.appliqueEffetNegatif();
-			if(perso.isDead()){
-				System.out.println("Vous etes mort !(malus)");
-				break;
-			}
 			if(tour==1){
 				System.out.println("Le combat commence ! Tour 1");
 			}else{
@@ -117,9 +159,9 @@ public class Main {
 			System.out.println("Vitalité perso:"+perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
 			System.out.println("Selectionnez votre action:");
 			System.out.println("	1. "+perso.getCac().toString2());
-			System.out.println("	2. "+perso.getListSorts().get(0).getNom()+": "+perso.getListSorts().get(0).getDescription());
-			System.out.println("	3. "+perso.getListSorts().get(1).getNom()+": "+perso.getListSorts().get(1).getDescription());
-			System.out.println("	4. "+perso.getListSorts().get(2).getNom()+": "+perso.getListSorts().get(2).getDescription());
+			System.out.println("	2. Sort1");
+			System.out.println("	3. Sort2");
+			System.out.println("	4. Sortulti");
 			System.out.println("	5. Objet");
 			String r ="";
 			double degats;
@@ -130,29 +172,21 @@ public class Main {
 					System.out.println("CAC choisi.");
 					if(perso.getCac().getType().equals("physique")){
 						degats = perso.infligeDegatCac() - poutch.getDef();
-						if(degats>0){
-							poutch.subitDegat(degats);
-							System.out.println("Poutch -" + degats + " pv !");
-						}else{
-							System.out.println("Poutch  ne subit aucun degats");
-						}
+						poutch.subitDegat(degats);
+						System.out.println("Poutch - " + degats + " pv !");
 					}else if(perso.getCac().getType().equals("special")){
 						degats = perso.infligeDegatCacSpe() - poutch.getDefspe();
-						if(degats>0){
-							poutch.subitDegat(degats);
-							System.out.println("Poutch -" + degats + " pv !");
-						}else{
-							System.out.println("Poutch  ne subit aucun degats");
-						}
+						poutch.subitDegat(degats);
+						System.out.println("Poutch - " + degats + " pv !");
 					}
 				}else if(r.equals("2")){
-					perso.getListSorts().get(0).getEffect(perso, poutch, dot);
-					
+					System.out.println("Sort1 choisi.");
+
 				}else if(r.equals("3")){
-					perso.getListSorts().get(1).getEffect(perso, poutch, dot);
+					System.out.println("Sort2 choisi.");
 
 				}else if(r.equals("4")){
-					perso.getListSorts().get(2).getEffect(perso, poutch, dot);
+					System.out.println("SortUlti choisi.");
 
 				}else if(r.equals("5")){
 					System.out.println("Objet choisi.");
@@ -164,7 +198,6 @@ public class Main {
 				}
 			}
 			tour++;
-			dot.endRound();
 		}
 		if(perso.getVita()<=0){
 			System.out.println("Vous avez perdu...");
@@ -173,7 +206,129 @@ public class Main {
 		}
 	}
 
-	private static void launchMagasin(ArrayList lcac,ArrayList larm, Personnage perso) {
+	
+	public static void launch1vIA(ArrayList lcac, Personnage perso,Personnage poutch){
+		
+		int tour=1;
+		while(!perso.isDead() && !poutch.isDead()){
+			if(tour==1){
+				System.out.println("Le combat commence ! Tour 1");
+			}else{
+				System.out.println("Le combat continu, tour "+tour);
+			}
+			if(perso.getVitesse()>poutch.getVitesse()){
+			System.out.println("Vitalité perso:"+perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
+			System.out.println("Selectionnez votre action:");
+			System.out.println("	1. "+perso.getCac().toString2());
+			System.out.println("	2. Sort1");
+			System.out.println("	3. Sort2");
+			System.out.println("	4. Sortulti");
+			System.out.println("	5. Objet");
+			String r ="";
+			double degats;
+			while(r.equals("")){
+				Scanner sc = new Scanner(System.in);
+				r = sc.nextLine();
+				if(r.equals("1")){
+					System.out.println("CAC choisi.");
+					if(perso.getCac().getType().equals("physique")){
+						degats = perso.infligeDegatCac() - poutch.getDef();
+						poutch.subitDegat(degats);
+						System.out.println("Poutch - " + degats + " pv !");
+					}else if(perso.getCac().getType().equals("special")){
+						degats = perso.infligeDegatCacSpe() - poutch.getDefspe();
+						poutch.subitDegat(degats);
+						System.out.println("Poutch - " + degats + " pv !");
+					}
+				}else if(r.equals("2")){
+					System.out.println("Sort1 choisi.");
+
+				}else if(r.equals("3")){
+					System.out.println("Sort2 choisi.");
+
+				}else if(r.equals("4")){
+					System.out.println("SortUlti choisi.");
+
+				}else if(r.equals("5")){
+					System.out.println("Objet choisi.");
+
+				}
+				else{
+					System.out.println("Choisissez une option disponible, 1 ,2, 3, 4 ou 5.");
+					r="";
+				}
+			} 
+			degats = poutch.infligeDegatCac() - perso.getDef();
+			perso.subitDegat(degats);
+			System.out.println("Perso - " + degats + " pv !");
+			
+			}else if (poutch.getVitesse()>perso.getVitesse()){
+				// Jeux de l'ia
+				Double degats;
+				degats = poutch.infligeDegatCac() - perso.getDef();
+				perso.subitDegat(degats);
+				System.out.println("Perso - " + degats + " pv !");
+				
+				System.out.println("Vitalité perso:"+perso.getVita()+"pv  |  Poutch:"+poutch.getVita()+"pv");
+				System.out.println("Selectionnez votre action:");
+				System.out.println("	1. "+perso.getCac().toString2());
+				System.out.println("	2. Sort1");
+				System.out.println("	3. Sort2");
+				System.out.println("	4. Sortulti");
+				System.out.println("	5. Objet");
+				String r ="";
+				while(r.equals("")){
+					Scanner sc = new Scanner(System.in);
+					r = sc.nextLine();
+					if(r.equals("1")){
+						System.out.println("CAC choisi.");
+						if(perso.getCac().getType().equals("physique")){
+							degats = perso.infligeDegatCac() - poutch.getDef();
+							poutch.subitDegat(degats);
+							System.out.println("Poutch - " + degats + " pv !");
+						}else if(perso.getCac().getType().equals("special")){
+							degats = perso.infligeDegatCacSpe() - poutch.getDefspe();
+							poutch.subitDegat(degats);
+							System.out.println("Poutch - " + degats + " pv !");
+						}
+					}else if(r.equals("2")){
+						System.out.println("Sort1 choisi.");
+
+					}else if(r.equals("3")){
+						System.out.println("Sort2 choisi.");
+
+					}else if(r.equals("4")){
+						System.out.println("SortUlti choisi.");
+
+					}else if(r.equals("5")){
+						System.out.println("Objet choisi.");
+
+					}
+					else{
+						System.out.println("Choisissez une option disponible, 1 ,2, 3, 4 ou 5.");
+						r="";
+					}
+				} 
+			}
+			tour++;
+		}
+		if(perso.getVita()<=0){
+			System.out.println("Vous avez perdu...");
+		} else{
+			System.out.println("Vous avez vaincu ce Poutch!");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private static void launchMagasin(ArrayList lcac,ArrayList larm, Personnage perso,Personnage monstre) {
 		System.out.println("Bienvnue dans l'échoppe !");
 		System.out.println("Vous disposer de "+perso.getGold()+" pièces d'or, voulez vous acheter des équipement ?");
 		System.out.println("	1. Oui");
@@ -208,9 +363,9 @@ public class Main {
 								perso.setCac((Cac) lcac.get(q));
 								perso.setGold(perso.getGold()-perso.getCac().getPrix());
 								System.out.println("Vous avez choisi "+perso.getCac().getNom());
-								launchMagasin(lcac,larm,perso);
+								launchMagasin(lcac,larm,perso,monstre);
 							}else if(q==o){
-								launchMagasin(lcac,larm,perso);
+								launchMagasin(lcac,larm,perso,monstre);
 							}else{
 								System.out.println("Choisissez une option disponible.");
 								r="";
@@ -233,9 +388,9 @@ public class Main {
 								perso.setArmure((Armure)larm.get(q));
 								perso.setGold(perso.getGold()-perso.getArmure().getPrix());
 								System.out.println("Vous avez choisi "+perso.getArmure().getNom());
-								launchMagasin(lcac,larm,perso);
+								launchMagasin(lcac,larm,perso,monstre);
 							}else if(q==o){
-								launchMagasin(lcac,larm,perso);
+								launchMagasin(lcac,larm,perso,monstre);
 							}else{
 								System.out.println("Choisissez une option disponible.");
 								r="";
@@ -261,7 +416,12 @@ public class Main {
 			}
 		}
 		System.out.println("Vous sortez de l'échoppe.");
-		launch1vPoutch(lcac,perso);
+		if(debug==0){
+			launch1vPoutch(lcac,perso);
+		}else{
+			
+			launch1vIA(lcac,perso,monstre);
+		}
 	}
 
 }
