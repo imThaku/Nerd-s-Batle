@@ -29,6 +29,7 @@ public class Main {
 				System.out.println("Mode en dev");
 				debug=2;
 				// monstre a creer
+				Fombassiette monstre= new Fombassiette();
 				launchStuff(listCAC,listARMURE);
 				launchSelec(listCAC,listARMURE,monstre);
 				
@@ -51,6 +52,7 @@ public class Main {
 					e.printStackTrace();
 				}
 				*/
+				Fombassiette monstre= new Fombassiette();
 				launchStuff(listCAC,listARMURE);
 				launchSelec(listCAC,listARMURE,monstre);
 			}	
@@ -64,7 +66,7 @@ public class Main {
 	public static void launchStuff(ArrayList<Cac> lc,ArrayList<Armure> la){
 		File test= new File("");
 		String t=test.getPath();
-		cac=new File(test.getAbsolutePath()+"//src//Arme-Feuille1.csv");
+		cac=new File(test.getAbsolutePath()+"//resources//Arme-Feuille1.csv");
 		arm=new File(test.getAbsolutePath()+"//resources//Equipement-Feuille1.csv");
 		CSVCac = new CSVDecoder(cac);
 		CSVArm = new CSVDecoder(arm);

@@ -46,11 +46,11 @@ public class CSVDecoder {
 		int cpt=0;
 		while((line = br.readLine()) != null){
 			elems = line.split(",");
-			if(elems.length == 10){
+			if(elems.length == 9){
 				if (cpt>=1){
 					
 				
-			Cac cac1 = new Cac (elems[0],Double.parseDouble(elems[8]),"cacs", Double.parseDouble(elems[1]),Double.parseDouble(elems[2]), Double.parseDouble(elems[3]),Double.parseDouble(elems[4]),Double.parseDouble(elems[5]),Double.parseDouble(elems[6]),Double.parseDouble(elems[7]), Double.parseDouble(elems[8]));
+			Cac cac1 = new Cac (elems[0],Double.parseDouble(elems[8]),"cacs", Double.parseDouble(elems[1]),Double.parseDouble(elems[2]), Double.parseDouble(elems[3]),Double.parseDouble(elems[4]),Double.parseDouble(elems[5]),Double.parseDouble(elems[6]),Double.parseDouble(elems[7]),1);
 			CSV.add(cac1);
 			//System.out.println(cac1.toString2());
 			}
