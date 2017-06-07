@@ -32,11 +32,6 @@ public class Personnage {
 	}
 	
 	
-	public Personnage() {
-		// TODO Auto-generated constructor stub
-	}
-
-
 	public double getVitaMAX() {
 		return vitaMAX;
 	}
@@ -168,6 +163,11 @@ public class Personnage {
 		this.objet=o;
 	}
 	
+	public Objet getObjet() {
+		return objet;
+	}
+
+
 	public void useObjet(){
 		if(this.objet.getBONUSvita()>0){
 			Effect vita = new Effect("vita",this.objet.getBONUSvita() , this.objet.getNbTour(), false);

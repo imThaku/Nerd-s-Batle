@@ -86,6 +86,40 @@ public class CSVDecoder {
 		br.close();
 		return CSV;
 	}
+	
+	public ArrayList<Objet> decodeObj() throws IOException{
+		String elems[];
+		String line;
+		FileInputStream fis;
+		ArrayList<Objet> CSV = new ArrayList<>();
+		if(!file.canRead()) return null;
+		fis = new FileInputStream(file);
+		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+		int cpt=0;
+		while((line = br.readLine()) != null){
+			elems = line.split(";");
+			/*for(int i=0;i<elems.length;i++){
+				if(i<elems.length){
+					System.out.print(elems[i] + " / ");
+				}else{
+					System.out.println(elems[i]);
+				}
+			}*/
+			if(elems.length == 9){
+				if (cpt>=1){
+					
+				
+			Objet obj = new Objet (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Double.parseDouble(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),Integer.parseInt(elems[8]));
+			CSV.add(obj);	
+			//System.out.println(arm.toString());
+			}
+			cpt++;
+			//System.out.println(cac1.toString2());
+			}
+		}
+		br.close();
+		return CSV;
+	}
 
 	public String getFile_name() {
 		return file_name;
