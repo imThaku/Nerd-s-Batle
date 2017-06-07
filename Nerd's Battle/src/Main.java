@@ -9,7 +9,8 @@ public class Main {
 	public static File cac;
 	public static File arm;
 	static int debug=0;
-	
+	static int persoc=0;
+	static Personnage Perso=new Personnage();
 	public static void main(String[] args) {
 		ArrayList<Cac> listCAC = new ArrayList();
 		ArrayList<Armure> listARMURE = new ArrayList();
@@ -28,9 +29,8 @@ public class Main {
 			}else if(r.equals("2")){
 				debug=2;
 				// monstre a creer
-<<<<<<< HEAD
-				Fombassiette monstre= new Fombassiette();
-=======
+
+
 				
 				System.out.println("Bienvenue dans le mode campagne");
 				System.out.println("Le GitTeub était une contrée paisible depuis des millénaires.Romain \n"
@@ -43,9 +43,10 @@ public class Main {
 						+ " fille de leur chef Fombassiette 123 qui était promise au prince du royaume du\n"
 						+ " Mortdort.Les gobelins se mirent à saccager la taverne et se ruèrent sur Murator et ses amis…");
 				
+				int cpt=0;
+				while (cpt!=5){
 				Personnage monstre1=new Personnage();
 				int rdm = (int) (1 + Math.random() * (4 - 1 + 1));
-				
 				System.out.println("\n COMBAT 1");
 				
 				switch(rdm){
@@ -67,12 +68,11 @@ public class Main {
 						System.out.println("\n Attention un Punchlino Gob apparaît !!");
 						break;
 				}
-				
->>>>>>> 0a848e49aadcdbf8b38991d5378588eb75c3ca61
+				cpt++;
 				launchStuff(listCAC,listARMURE);
 				launchSelec(listCAC,listARMURE,monstre1);
 				
-				
+				}
 				
 				
 				
@@ -96,7 +96,7 @@ public class Main {
 				
 			}else if(r.equals("3")){
 				System.out.println("Mod sélectionné: 1vPoutch.");
-<<<<<<< HEAD
+
 				/*
 				cac=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//src//Arme-Feuille1.csv");
 				arm=new File("//Users//Stephou//Documents//GitHub//Nerd-s-Battle//Nerd's Battle//resources//Equipement-Feuille1.csv");
@@ -114,10 +114,9 @@ public class Main {
 					e.printStackTrace();
 				}
 				*/
-				Fombassiette monstre= new Fombassiette();
-=======
+
 				Personnage monstre1=new Personnage();
->>>>>>> 0a848e49aadcdbf8b38991d5378588eb75c3ca61
+			
 				launchStuff(listCAC,listARMURE);
 				launchSelec(listCAC,listARMURE,monstre1);
 			}	
@@ -127,7 +126,7 @@ public class Main {
 			}
 		}
 	}
-	
+
 	public static void launchStuff(ArrayList<Cac> lc,ArrayList<Armure> la){
 		File test= new File("");
 		String t=test.getPath();
@@ -145,7 +144,8 @@ public class Main {
 	}
 	
 	public static void launchSelec(ArrayList<Cac> lcac,ArrayList<Armure> larm,Personnage monstre){
-		Personnage perso = null;
+
+		if(persoc==0){
 		System.out.println("Quelle classe voulez-vous jouer ?");
 		System.out.println("	1. Guerrier");
 		System.out.println("	2. Mage");
@@ -156,21 +156,25 @@ public class Main {
 			r = sc.nextLine();
 			if(r.equals("1")){
 				System.out.println("Guerrier choisi.");
-				perso = new Guerrier();
+				Perso = new Guerrier();
 			}else if(r.equals("2")){
 				System.out.println("Mage choisi.");
-				perso = new Mage();
+				Perso = new Mage();
 			}else if(r.equals("3")){
 				System.out.println("Archer choisi.");
-				perso = new Archer();
+				Perso = new Archer();
 			}
 			else{
 				System.out.println("Choisissez une classe disponible, 1 ,2 ou 3.");
 				r="";
 			}
 		}
-		launchMagasin(lcac,larm,perso,monstre);
+		persoc=1;
+		launchMagasin(lcac,larm,Perso,monstre);
+		}
+		launchMagasin(lcac,larm,Perso,monstre);
 	}
+
 	
 	public static void launch1vPoutch(ArrayList lcac,Personnage perso){
 		Poutch poutch = new Poutch();
@@ -355,7 +359,7 @@ public class Main {
 	
 	private static void launchMagasin(ArrayList lcac,ArrayList larm, Personnage perso,Personnage monstre) {
 		System.out.println("Bienvnue dans l'échoppe !");
-		System.out.println("Vous disposer de "+perso.getGold()+" pièces d'or, voulez vous acheter des équipement ?");
+		System.out.println("Vous disposer de "+Perso.getGold()+" pièces d'or, voulez vous acheter des équipement ?");
 		System.out.println("	1. Oui");
 		System.out.println("	2. Non");
 		String r ="";
@@ -386,11 +390,11 @@ public class Main {
 							int q = Integer.parseInt(r);
 							if(q>=0 && q<lcac.size()){
 								perso.setCac((Cac) lcac.get(q));
-								perso.setGold(perso.getGold()-perso.getCac().getPrix());
-								System.out.println("Vous avez choisi "+perso.getCac().getNom());
-								launchMagasin(lcac,larm,perso,monstre);
+								Perso.setGold(Perso.getGold()-Perso.getCac().getPrix());
+								System.out.println("Vous avez choisi "+Perso.getCac().getNom());
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else if(q==o){
-								launchMagasin(lcac,larm,perso,monstre);
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else{
 								System.out.println("Choisissez une option disponible.");
 								r="";
@@ -410,12 +414,12 @@ public class Main {
 							r = sc2.nextLine();
 							int q = Integer.parseInt(r);
 							if(q>=0 && q<larm.size()){
-								perso.setArmure((Armure)larm.get(q));
-								perso.setGold(perso.getGold()-perso.getArmure().getPrix());
-								System.out.println("Vous avez choisi "+perso.getArmure().getNom());
-								launchMagasin(lcac,larm,perso,monstre);
+								Perso.setArmure((Armure)larm.get(q));
+								Perso.setGold(Perso.getGold()-Perso.getArmure().getPrix());
+								System.out.println("Vous avez choisi "+Perso.getArmure().getNom());
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else if(q==o){
-								launchMagasin(lcac,larm,perso,monstre);
+								launchMagasin(lcac,larm,Perso,monstre);
 							}else{
 								System.out.println("Choisissez une option disponible.");
 								r="";
@@ -442,10 +446,10 @@ public class Main {
 		}
 		System.out.println("Vous sortez de l'échoppe.");
 		if(debug==0){
-			launch1vPoutch(lcac,perso);
+			launch1vPoutch(lcac,Perso);
 		}else{
 			
-			launch1vIA(lcac,perso,monstre);
+			launch1vIA(lcac,Perso,monstre);
 		}
 	}
 

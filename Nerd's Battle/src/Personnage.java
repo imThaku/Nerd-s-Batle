@@ -24,6 +24,11 @@ public class Personnage {
 	}
 	
 	
+	public Personnage() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public ArrayList<Sort> getListSorts() {
 		return listSorts;
 	}
