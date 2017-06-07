@@ -2,12 +2,15 @@
 import java.util.ArrayList;
 
 public class monstre extends Personnage{
+	public monstre(double vita, double vitesse, double esquive, double atk, double atkspe, double def, double defspe) {
+		super(vita, vitesse, esquive, atk, atkspe, def, defspe);
+		// TODO Auto-generated constructor stub
+	}
+
 	private ArrayList Sort;
 	private Cac cac = new Cac("Trempette",0.0,"physique");
 
-	public monstre() {
-		super(100, 5, 10, 24, 10, 6, 0);
-	}
+	
 
 	public ArrayList getSort() {
 		return Sort;

@@ -46,7 +46,7 @@ public class CSVDecoder {
 		int cpt=0;
 		while((line = br.readLine()) != null){
 			elems = line.split(",");
-			if(elems.length == 9){
+			if(elems.length == 10){
 				if (cpt>=1){
 					
 				
@@ -74,11 +74,11 @@ public class CSVDecoder {
 		int cpt=0;
 		while((line = br.readLine()) != null){
 			elems = line.split(",");
-			if(elems.length == 8){
+			if(elems.length == 9){
 				if (cpt>=1){
 					
 				
-			Armure arm = new Armure (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Integer.parseInt(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),1);
+			Armure arm = new Armure (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Integer.parseInt(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),Integer.parseInt(elems[8]));
 			CSV.add(arm);	
 			//System.out.println(cac1.toString2());
 			}
