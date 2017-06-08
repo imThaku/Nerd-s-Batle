@@ -35,4 +35,7 @@ public class Effect {
 	public void setTempsRestant(int temps){
 		this.nbTours = temps;
 	}
+	public String toString(){
+		return this.getEffectName()+" "+this.getEffectValeur();
+	}
 }

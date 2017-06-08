@@ -163,7 +163,7 @@ public class Objet {
 	}
 	
 	public String toString(){
-			return "Objet: "+this.nom+" ( /vita "+this.BONUSvita+" /vit "+this.BONUSvitesse+" /esq "+this.BONUSesquive+" /atk "+this.BONUSatk+" /atkspe "+this.BONUSatkspe+" /def "+this.BONUSdef+" /defspe "+this.BONUSdefspe+") "+this.prix+" Pièces d'or";
+			return "Objet: "+this.nom+" ( /vita "+this.BONUSvita+" /vit "+this.BONUSvitesse+" /esq "+this.BONUSesquive+" /atk "+this.BONUSatk+" /atkspe "+this.BONUSatkspe+" /def "+this.BONUSdef+" /defspe "+this.BONUSdefspe+") actif "+this.nbTour+"tours. |"+this.prix+" Pièces d'or";
 
 	}
 }

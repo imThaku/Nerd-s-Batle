@@ -105,11 +105,11 @@ public class CSVDecoder {
 					System.out.println(elems[i]);
 				}
 			}*/
-			if(elems.length == 9){
+			if(elems.length == 10){
 				if (cpt>=1){
 					
 				
-			Objet obj = new Objet (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Double.parseDouble(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),Integer.parseInt(elems[8]));
+			Objet obj = new Objet (elems[0],Integer.parseInt(elems[1]),Integer.parseInt(elems[2]),Double.parseDouble(elems[3]),Integer.parseInt(elems[4]),Integer.parseInt(elems[5]),Integer.parseInt(elems[6]),Integer.parseInt(elems[7]),Integer.parseInt(elems[8]),Integer.parseInt(elems[9]));
 			CSV.add(obj);	
 			//System.out.println(arm.toString());
 			}

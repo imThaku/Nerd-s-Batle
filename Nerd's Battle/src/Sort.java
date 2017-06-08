@@ -7,6 +7,7 @@ public class Sort {
 	private String nom;
 	private double coeff_degats;
 	private String description;
+	private int cooldown=0;
 	
 	public Sort(String nom, double coeff_degat, String description){
 		this.nom = nom;
@@ -36,4 +37,21 @@ public class Sort {
 	public void getEffect(Personnage p1, Personnage p2, Dot dot){
 		
 	}
+	public void downCD(){
+		if(cooldown>0){
+			cooldown--;
+		}else{
+			System.out.println("Le cooldown est prêt!");
+		}
+	}
+
+	public int getCooldown() {
+		return cooldown;
+	}
+
+	public void setCooldown(int cooldown) {
+		this.cooldown = cooldown;
+	}
+	
+	
 }

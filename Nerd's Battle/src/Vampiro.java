@@ -6,10 +6,15 @@ public class Vampiro extends Sort{
 	}
 	
 	public void getEffect(Personnage p1,Personnage p2,Dot d){
-		p2.subitDegat(p1.getAtk()-p2.getDef());
-		System.out.println(p2.getNom()+" subit "+(p1.getAtk()-p2.getDef())+" dégats !");
-		p1.setVita(p1.getVita()+((p1.getAtk()-p2.getDef())/3));
-		System.out.println(p1.getNom()+" se regénère de "+((p1.getAtk()-p2.getDef())/3)+" PV !");
+		double rdm = Math.random();
+		if(rdm>p2.getEsquive()){
+			p2.subitDegat(p1.getAtk()-p2.getDef());
+			System.out.println(p2.getNom()+" subit "+(p1.getAtk()-p2.getDef())+" dégats !");
+			p1.setVita(p1.getVita()+((p1.getAtk()-p2.getDef())/3));
+			System.out.println(p1.getNom()+" se regénère de "+((p1.getAtk()-p2.getDef())/3)+" PV !");
+		}else{
+			System.out.println(p2.getNom()+" a esquivé.");
+		}
 	}
 	
 }

@@ -11,7 +11,7 @@ public class Personnage {
 	private double defspe;
 	private double gold =5000;
 	private String nom;
-	private boolean canBeHeal = true;
+	private boolean cantBeHeal = false;
 	private ArrayList <Sort> listSorts =new ArrayList();
 	private Cac cac = new Cac("Coup de poing",1.0,"physique",0,0,0,0,0,0,0,0);
 	private Armure armure = new Armure("Armure du debutant", 0, 0, 0, 0, 0, 0, 0,0);
@@ -42,13 +42,13 @@ public class Personnage {
 	}
 
 
-	public boolean isCanBeHeal() {
-		return canBeHeal;
+	public boolean isCantBeHeal() {
+		return cantBeHeal;
 	}
 
 
-	public void setCanBeHeal(boolean canBeHeal) {
-		this.canBeHeal = canBeHeal;
+	public void setCantBeHeal(boolean cantBeHeal) {
+		this.cantBeHeal = cantBeHeal;
 	}
 
 
@@ -85,9 +85,11 @@ public class Personnage {
 		return vita;
 	}
 	public void setVita(double vita) {
-		this.vita = vita;
-		if(this.vita>this.vitaMAX){
-			this.vita=this.vitaMAX;
+		if (!isCantBeHeal()) {
+			this.vita = vita;
+			if (this.vita > this.vitaMAX) {
+				this.vita = this.vitaMAX;
+			}
 		}
 	}
 	public double getVitesse() {
@@ -301,216 +303,247 @@ public class Personnage {
 
 	public void appliqueEffetPositif() {
 		Effect e;
-		if(this.getListEffectPositif().isEmpty()){
+		if (this.getListEffectPositif().isEmpty()) {
 			return;
 		}
-	/*	for (Effect e : listEffectPositif) {*/
-		for(int i = 0; i < listEffectPositif.size(); ++i){
+		/* for (Effect e : listEffectPositif) { */
+		for (int i = 0; i < listEffectPositif.size(); ++i) {
 			e = listEffectPositif.get(i);
 			switch (e.getEffectName()) {
 			case "vita":
-				this.vita += e.getEffectValeur();
-				System.out.println(this.nom + " +" + e.getEffectValeur() + "pv!");
+				if (e.getTempsRestant() > 0) {
+					if (!e.getEffectActif()) {
+						this.vita += e.getEffectValeur();
+						System.out.println(this.nom + " +" + e.getEffectValeur() + "pv!");
+						e.setEffectActif(true);
+					}
+				}
 				break;
 
 			case "atk":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
 						this.atk += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" ATK +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " ATK +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.atk -= e.getEffectValeur();
 				}
 				break;
-				
+
 			case "atkSpe":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
 						this.atkspe -= e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" ATKSpé +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " ATKSpé +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.atkspe -= e.getEffectValeur();
 				}
 				break;
-				
+
 			case "def":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
 						this.def += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" DEF +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " DEF +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.def -= e.getEffectValeur();
 				}
 				break;
-				
+
 			case "defSpe":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
 						this.defspe += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" DEFSpé +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " DEFSpé +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.defspe -= e.getEffectValeur();
 				}
 				break;
-				
+
 			case "vit":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
 						this.vitesse += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" VIT +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " VIT +" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.vitesse -= e.getEffectValeur();
 				}
 				break;
-				
+
 			case "esq":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
 						this.esquive += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" Esquive +" + e.getEffectValeur()+", esquive actuel " + this.getEsquive() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(this.nom + " Esquive +" + e.getEffectValeur() + ", esquive actuel "
+							+ this.getEsquive() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.esquive -= e.getEffectValeur();
 				}
 				break;
-				
-			case "stun":
-				if (e.getTempsRestant() > 0) {
-					if (!e.getEffectActif()) {
-						this.stun = true;
-						System.out.println(this.nom +"est stunmmm !");
-					}
-					System.out.println(this.nom +"est stun temps restant: " + e.getTempsRestant());
-				}
-				else {
-					this.stun = false;
-				}
-				break;
-				
+
 			default:
 				break;
 			}
-		//	System.out.println("ok!!!!!!!!!!!!!!!!!!!!!!");
+			// System.out.println("ok!!!!!!!!!!!!!!!!!!!!!!");
 			if (e.getTempsRestant() == 0)
 				listEffectPositif.remove(e);
 			else {
-		//		System.out.println(e.getTempsRestant());
+				// System.out.println(e.getTempsRestant());
 				e.setTempsRestant(e.getTempsRestant() - 1);
-		//		System.out.println(e.getTempsRestant());
+				// System.out.println(e.getTempsRestant());
 			}
 		}
 	}
-	
-	
+
 	public void appliqueEffetNegatif() {
 		Effect e;
-		if(this.getListEffectNegatif().isEmpty()){
+		if (this.getListEffectNegatif().isEmpty()) {
 			return;
 		}
-		/*for (Effect e : listEffectNegatif) {*/
-		for(int i=0; i < listEffectNegatif.size(); ++i){
+		/* for (Effect e : listEffectNegatif) { */
+		for (int i = 0; i < listEffectNegatif.size(); ++i) {
 			e = listEffectNegatif.get(i);
 			switch (e.getEffectName()) {
 			case "vita":
-				this.vita -= e.getEffectValeur();
-				System.out.println(this.nom + " +" + e.getEffectValeur() + "pv!");
+				if (e.getTempsRestant() > 0) {
+					if (!e.getEffectActif()) {
+						this.vita += e.getEffectValeur();
+						System.out.println(this.nom + " +" + e.getEffectValeur() + "pv!");
+						e.setEffectActif(true);
+					}
+				}
 				break;
 
 			case "atk":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
-						this.atk -= e.getEffectValeur();
+						this.atk += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" ATK -" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " ATK " + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.atk += e.getEffectValeur();
 				}
 				break;
-				
+
 			case "atkSpe":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
-						this.atkspe -= e.getEffectValeur();
+						this.atkspe += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" ATKSpé -" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " ATKSpé " + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.atkspe += e.getEffectValeur();
 				}
 				break;
-				
+
 			case "def":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
-						this.def -= e.getEffectValeur();
+						this.def += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" DEF -" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " DEF " + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.def += e.getEffectValeur();
 				}
 				break;
-				
+
 			case "defSpe":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
-						this.defspe -= e.getEffectValeur();
+						this.defspe += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" DEFSpé -" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " DEFSpé " + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.defspe += e.getEffectValeur();
 				}
 				break;
-				
+
 			case "vit":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
-						this.vitesse -= e.getEffectValeur();
+						this.vitesse += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" VIT -" + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(
+							this.nom + " VIT " + e.getEffectValeur() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.vitesse += e.getEffectValeur();
 				}
 				break;
-				
+
 			case "esq":
 				if (e.getTempsRestant() > 0) {
 					if (!e.getEffectActif()) {
-						this.esquive -= e.getEffectValeur();
+						this.esquive += e.getEffectValeur();
+						e.setEffectActif(true);
 					}
-					System.out.println(this.nom +" Esquive -" + e.getEffectValeur()+", esquive actuel " + this.getEsquive() + " temps restant: " + e.getTempsRestant());
-				}
-				else {
+					System.out.println(this.nom + " Esquive " + e.getEffectValeur() + ", esquive actuel "
+							+ this.getEsquive() + " temps restant: " + e.getTempsRestant());
+				} else {
 					this.esquive += e.getEffectValeur();
 				}
 				break;
-				
-				
+
+			case "stun":
+				if (e.getTempsRestant() > 0) {
+					if (!e.getEffectActif()) {
+						this.stun = true;
+					}
+					System.out.println(this.nom + " est stun temps restant: " + e.getTempsRestant());
+				} else {
+					this.stun = false;
+				}
+				break;
+
+			case "nonHeal":
+				if (e.getTempsRestant() > 0) {
+					if (!e.getEffectActif()) {
+						this.cantBeHeal = true;
+					}
+					System.out.println(this.nom + " est insoignable temps restant: " + e.getTempsRestant());
+				} else {
+					this.cantBeHeal = false;
+				}
+				break;
+
 			default:
-				
+
 				break;
 			}
-		//	System.out.println("ok!!!!!!!!!!!!!!!!!!!!!!");
-			if (e.getTempsRestant() == 0)
-				listEffectPositif.remove(e);
+			// System.out.println("ok!!!!!!!!!!!!!!!!!!!!!!");
+			if (e.getTempsRestant() == 0){
+				listEffectNegatif.remove(e);
+				System.out.println("TIME OVER");
+			}
 			else {
-			//	System.out.println(e.getTempsRestant());
+				// System.out.println(e.getTempsRestant());
 				e.setTempsRestant(e.getTempsRestant() - 1);
-			//	System.out.println(e.getTempsRestant());
+				// System.out.println(e.getTempsRestant());
 			}
 		}
 	}
