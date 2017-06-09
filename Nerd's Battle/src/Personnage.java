@@ -20,7 +20,7 @@ public class Personnage {
 	private ArrayList<Effect> listEffectPositif=new ArrayList();
 	private ArrayList<Effect> listEffectNegatif=new ArrayList();
 	
-	public Personnage(double vita, double vitesse, double esquive, double atk, double atkspe, double def,double defspe) {
+	public Personnage(double vita, double vitesse, double esquive, double atk, double atkspe, double def,double defspe,String nom) {
 		this.vita = vita;
 		this.vitesse = vitesse;
 		this.esquive = esquive;
@@ -29,9 +29,15 @@ public class Personnage {
 		this.def = def;
 		this.defspe = defspe;
 		this.vitaMAX=this.vita;
+		this.nom=nom;
 	}
 	
 	
+	public Personnage() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public double getVitaMAX() {
 		return vitaMAX;
 	}

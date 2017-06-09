@@ -6,7 +6,7 @@ public class Fombassiette extends Personnage{
 	private Cac cac = new Cac("Dent en or",50.0,"physique");
 
 	public Fombassiette() {
-		super(500, 10, 0.2, 50, 0, 20, 20);
+		super(500, 10, 0.2, 50, 0, 20, 20,"Fombassiette");
 	}
 
 	public ArrayList getSort() {

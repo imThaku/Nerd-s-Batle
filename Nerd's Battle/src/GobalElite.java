@@ -5,7 +5,7 @@ public class GobalElite extends Personnage {
 	private Cac cac = new Cac("Awp",30.0,"physique");
 
 	public GobalElite() {
-		super(150, 90, 0.3, 30, 0, 30, 15);
+		super(150, 90, 0.3, 30, 0, 30, 15,"GobalElite");
 	}
 
 	public ArrayList getSort() {

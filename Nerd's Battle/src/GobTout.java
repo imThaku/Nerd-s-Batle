@@ -5,7 +5,7 @@ public class GobTout extends Personnage {
 	private Cac cac = new Cac("Lance langue",10.0,"physique");
 
 	public GobTout() {
-		super(200, 10, 0.0, 10, 0, 10, 10);
+		super(200, 10, 0.0, 10, 0, 10, 10,"GobTout");
 	}
 
 	public ArrayList getSort() {

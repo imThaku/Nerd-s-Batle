@@ -6,7 +6,7 @@ public class PunchlinoGob extends Personnage {
 	private Cac cac = new Cac("Hook",50.0,"physique");
 
 	public PunchlinoGob() {
-		super(50, 150, 0.5, 30, 0, 0, 0);
+		super(50, 150, 0.5, 30, 0, 0, 0,"PunchlinoGob");
 	}
 
 	public ArrayList getSort() {
